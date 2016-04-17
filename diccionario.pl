@@ -1,29 +1,41 @@
 %Diccionario
-determinante --> [el].
-determinante --> [la].
-determinante --> [un].
-determinante --> [una].
-nombre --> [hombre].
-nombre --> [mujer].
-nombre --> [juan].
-nombre --> [mar�a].
-nombre --> [manzanas].
-nombre --> [manzana].
-nombre --> [gato].
-nombre --> [rat�n].
-nombre --> [alumno].
-nombre --> [ratones].
-nombre --> [universidad].
-verbo --> [ama].
-verbo --> [come].
-verbo --> [estudia].
-verbo --> [era].
-verbo --> [caz�].
-adjetivo --> [roja].
-adjetivo --> [negro].
-adjetivo --> [grande].
-adjetivo --> [gris].
-adjetivo --> [peque�o].
-preposicion --> [en].
-preposicion --> [a].
-pronombre --> [que].
+determinante(det(X)) --> [X],{det(X)}.
+det(el).
+det(la).
+det(un).
+det(una).
+
+nombre(n(X)) --> [X],{n(X)}.
+n(hombre).
+n(mujer).
+n(juan).
+n(maria).
+n(manzanas).
+n(manzana).
+n(gato).
+n(raton).
+n(alumno).
+n(ratones).
+n(universidad).
+
+verbo(v(X)) --> [X],{v(X)}.
+v(ama).
+v(come).
+v(estudia).
+v(era).
+v(cazo).
+v(es).
+
+adjetivo(a(X)) --> [X],{a(X)}.
+a(roja).
+a(negro).
+a(grande).
+a(gris).
+a(pequeno).
+
+preposicion(p(X)) --> [X],{p(X)}.
+p(en).
+p(a).
+
+pronombre(pn(X)) --> [X],{pn(X)}.
+pn(que).

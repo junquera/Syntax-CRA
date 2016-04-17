@@ -1,20 +1,20 @@
 % Reglas gramaticales
-oracion --> g_nominal, g_verbal.
-g_nominal --> nombre.
-g_nominal --> determinante, nombre.
-g_nominal --> nombre, adjetivo.
-g_nominal --> determinante, nombre, adjetivo.
-g_nominal --> nombre, g_proposicional.
-g_nominal --> determinante, nombre, g_proposicional.
-g-nominal --> determinante, g_proposicional.
+oracion(o(GN, GV)) --> g_nominal(GN), g_verbal(GV).
 
-g_verbal --> verbo.
-g_verbal --> verbo, g_nominal.
-g_verbal --> verbo, adjetivo.
-g_verbal --> verbo, g_preposicional.
+g_nominal(gn(N)) --> nombre(N).
+g_nominal(gn(D, N)) --> determinante(D), nombre(N).
+g_nominal(gn(N, A)) --> nombre(N), adjetivo(A).
+g_nominal(gn(D, N, A)) --> determinante(D), nombre(N), adjetivo(A).
+g_nominal(gn(N, GP)) --> nombre(N), g_proposicional(GP).
+g_nominal(gn(D, N, GP)) --> determinante(D), nombre(N),
 
-g_proposicional --> pronombre, g_verbal.
-g_preposicional --> preposicion, g_nominal.
+g_proposicional(GP).
+g-nominal(gn(D, GP)) --> determinante(D), g_proposicional(GP).
 
+g_verbal(gv(V)) --> verbo(V).
+g_verbal(gv(V, GN)) --> verbo(V), g_nominal(GN).
+g_verbal(gv(V, A)) --> verbo(V), adjetivo(A).
+g_verbal(gv(V, GP)) --> verbo(V), g_preposicional(GP).
 
-
+g_proposicional(gp(PN, GV)) --> pronombre(PN), g_verbal(GV).
+g_preposicional(gp(P, GN)) --> preposicion(P), g_nominal(GN).
