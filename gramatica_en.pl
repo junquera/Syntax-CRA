@@ -1,38 +1,38 @@
 % Reglas gramaticales
-oracion(o(GN, GV)) --> g_nominal(GN, _, NUM), g_verbal(GV, NUM).
-oracion(o(GV)) --> g_verbal(GV, _).
+sentence(o(GN, GV)) --> nominal_g(GN, _, NUM), verbal_g(GV, NUM).
+sentence(o(GV)) --> verbal_g(GV, _).
 
-g_nominal(gn(N), G, NUM) --> nombre(N, G, NUM).
-g_nominal(gn(N), G, NUM) --> determinante(N, G, NUM).
-g_nominal(gn(D, N), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM).
-g_nominal(gn(N, A), G, NUM) --> nombre(N, G, NUM), adjetivo(A, G, NUM).
-g_nominal(gn(D, N, A), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), adjetivo(A, G, NUM).
-g_nominal(gn(D, GP), G, NUM) --> determinante(D, G, NUM), g_proposicional(GP).
-g_nominal(gn(N, GP), G, NUM) --> nombre(N, G, NUM), g_proposicional(GP).
-g_nominal(gn(D, N, A, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), adjetivo(A, G, NUM), g_preposicional(GP).
-g_nominal(gn(D, N, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), g_preposicional(GP).
-g_nominal(gn(D, N, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), g_proposicional(GP).
+nominal_g(gn(N), G, NUM) --> noun(N, G, NUM).
+nominal_g(gn(N), G, NUM) --> determ(N, G, NUM).
+nominal_g(gn(D, N), G, NUM) --> determ(D, G, NUM), noun(N, G, NUM).
+nominal_g(gn(N, A), G, NUM) --> noun(N, G, NUM), adjetive(A, G, NUM).
+nominal_g(gn(D, N, A), G, NUM) --> determ(D, G, NUM), noun(N, G, NUM), adjetive(A, G, NUM).
+nominal_g(gn(D, GP), G, NUM) --> determ(D, G, NUM), propositional_g(GP).
+nominal_g(gn(N, GP), G, NUM) --> noun(N, G, NUM), propositional_g(GP).
+nominal_g(gn(D, N, A, GP), G, NUM) --> determ(D, G, NUM), noun(N, G, NUM), adjetive(A, G, NUM), prepositional_g(GP).
+nominal_g(gn(D, N, GP), G, NUM) --> determ(D, G, NUM), noun(N, G, NUM), prepositional_g(GP).
+nominal_g(gn(D, N, GP), G, NUM) --> determ(D, G, NUM), noun(N, G, NUM), propositional_g(GP).
 
-% g_proposicional(gp(PN)).
-g_proposicional(gp(PN, GV)) --> pronombre(PN), g_verbal(GV, _).
+% propositional_g(gp(PN)).
+propositional_g(gp(PN, GV)) --> pronoun(PN), verbal_g(GV, _).
 
-g_preposicional(gp(P, GN)) --> preposicion(P), g_nominal(GN, _, _).
-g_preposicional(gp(P, GV)) --> preposicion(P), g_verbal(GV, _).
-g_preposicional(gp(ADV, GN)) --> adverbio(ADV), g_nominal(GN, _, _).
-g_preposicional(gp(ADV, GV)) --> adverbio(ADV), g_verbal(GV, _).
+prepositional_g(gp(P, GN)) --> preposition(P), nominal_g(GN, _, _).
+prepositional_g(gp(P, GV)) --> preposition(P), verbal_g(GV, _).
+prepositional_g(gp(ADV, GN)) --> adverb(ADV), nominal_g(GN, _, _).
+prepositional_g(gp(ADV, GV)) --> adverb(ADV), verbal_g(GV, _).
 
-g_adverbial(ga(ADV)) --> adverbio(ADV).
-g_adverbial(ga(ADV, A)) --> adverbio(ADV), adjetivo(A, _, _).
-g_adverbial(ga(ADV, A, GN)) --> adverbio(ADV), adjetivo(A, G, NUM), g_nominal(GN, G, NUM).
+adverbial_g(ga(ADV)) --> adverb(ADV).
+adverbial_g(ga(ADV, A)) --> adverb(ADV), adjetive(A, _, _).
+adverbial_g(ga(ADV, A, GN)) --> adverb(ADV), adjetive(A, G, NUM), nominal_g(GN, G, NUM).
 
-compuesta(cnj(CNJ, O)) --> conjuncion(CNJ), oracion(O).
+complex(cnj(CNJ, O)) --> conjunction(CNJ), oracion(O).
 
-g_verbal(gv(V), NUM) --> verbo(V,NUM).
-g_verbal(gv(V, GN, CMP), NUM) --> verbo(V,NUM), g_nominal(GN, _, _), compuesta(CMP).
-g_verbal(gv(V, GN), NUM) --> verbo(V,NUM), g_nominal(GN, _, NUM).
-g_verbal(gv(V, A), NUM) --> verbo(V,NUM), adjetivo(A, _, NUM).
-g_verbal(gv(V, A, GA), NUM) --> verbo(V,NUM), adjetivo(A, _, NUM), g_adverbial(GA).
-g_verbal(gv(V, GP), NUM) --> verbo(V,NUM), g_preposicional(GP).
-g_verbal(gv(V, GA), NUM) --> verbo(V,NUM), g_adverbial(GA).
-g_verbal(gv(V, A, CMP), NUM) --> verbo(V,NUM), adjetivo(A, _, NUM), compuesta(CMP).
-g_verbal(gv(V, CMP), NUM) --> verbo(V,NUM), compuesta(CMP).
+verbal_g(gv(V), NUM) --> verb(V,NUM).
+verbal_g(gv(V, GN, CMP), NUM) --> verb(V,NUM), nominal_g(GN, _, _), complex(CMP).
+verbal_g(gv(V, GN), NUM) --> verb(V,NUM), nominal_g(GN, _, NUM).
+verbal_g(gv(V, A), NUM) --> verb(V,NUM), adjetive(A, _, NUM).
+verbal_g(gv(V, A, GA), NUM) --> verb(V,NUM), adjetive(A, _, NUM), adverbial_g(GA).
+verbal_g(gv(V, GP), NUM) --> verb(V,NUM), prepositional_g(GP).
+verbal_g(gv(V, GA), NUM) --> verb(V,NUM), adverbial_g(GA).
+verbal_g(gv(V, A, CMP), NUM) --> verb(V,NUM), adjetive(A, _, NUM), complex(CMP).
+verbal_g(gv(V, CMP), NUM) --> verb(V,NUM), complex(CMP).

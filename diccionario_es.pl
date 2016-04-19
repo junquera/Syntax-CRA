@@ -38,7 +38,6 @@ verbo(v(v_2), sn) --> [come].
 verbo(v(v_2), sn) --> [comes].
 verbo(v(v_3), sn) --> [estudia].
 verbo(v(v_4), sn) --> [era].
-verbo(v(v_5), sn) --> [cazo].
 verbo(v(v_6), sn) --> [es].
 verbo(v(v_7), pl) --> [comen].
 verbo(v(v_8), sn) --> [persiguio].
@@ -58,29 +57,10 @@ adjetivo(a(a_5), f, sn) --> [grande].
 adjetivo(a(a_6), m, sn) --> [bien].
 adjetivo(a(a_7), m, sn) --> [amarillo].
 adjetivo(a(a_8), m, sn) --> [delgado].
-adjetivo(a(a_6), f, sn) --> [alta].
+adjetivo(a(a_9), f, sn) --> [alta].
 
 preposicion(p(p_1)) --> [a].
-preposicion(p(p_2)) --> [ante].
-preposicion(p(p_3)) --> [bajo].
-preposicion(p(p_4)) --> [cabe].
-preposicion(p(p_5)) --> [con].
-preposicion(p(p_6)) --> [contra].
-preposicion(p(p_7)) --> [de].
-preposicion(p(p_8)) --> [desde].
-preposicion(p(p_9)) --> [en].
-preposicion(p(p_10)) --> [entre].
-preposicion(p(p_11)) --> [hacia].
-preposicion(p(p_12)) --> [hasta].
-preposicion(p(p_13)) --> [para].
-preposicion(p(p_14)) --> [por].
-preposicion(p(p_15)) --> [segun].
-preposicion(p(p_16)) --> [sin].
-preposicion(p(p_17)) --> [sobre].
-preposicion(p(p_18)) --> [tras].
-preposicion(p(p_19)) --> [durante].
-preposicion(p(p_20)) --> [mediante].
-
+preposicion(p(p_2)) --> [en].
 
 pronombre(pn(pn_1)) --> [que].
 
