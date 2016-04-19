@@ -1,37 +1,30 @@
 %Diccionario
-determinante(det(det_1), m, sn) --> [el].
-determinante(det(det_2), f, sn) --> [la].
-determinante(det(det_3), m, pl) --> [los].
-determinante(det(det_4), f, pl) --> [las].
-determinante(det(det_5), m, sn) --> [un].
-determinante(det(det_6), f, sn) --> [una].
-determinante(det(det_7), m, pl) --> [unos].
-determinante(det(det_8), f, pl) --> [unas].
-determinante(det(det_9), m, pl) --> [ellos].
-determinante(det(det_10), m, sn) --> [tu].
-determinante(det(det_10), f, sn) --> [tu].
-determinante(det(det_11), m, sn) --> [mi].
-determinante(det(det_11), f, sn) --> [mi].
+determinante(det(det_1), m, sn) --> [the].
+determinante(det(det_2), m, sn) --> [a].
+determinante(det(det_3), m, pl) --> [some].
+determinante(det(det_4), m, pl) --> [they].
+determinante(det(det_5), m, pl) --> [you].
+determinante(det(det_6), m, pl) --> [me].
 
-nombre(n(n_1), m, sn) --> [hombre].
-nombre(n(n_2), f, sn) --> [mujer].
-nombre(n(n_3), m, sn) --> [juan].
-nombre(n(n_4), f, sn) --> [maria].
-nombre(n(n_5), f, sn) --> [manzana].
-nombre(n(n_6), f, pl) --> [manzanas].
-nombre(n(n_7), m, sn) --> [gato].
-nombre(n(n_8), m, sn) --> [raton].
-nombre(n(n_9), m, sn) --> [alumno].
-nombre(n(n_10), m, pl) --> [ratones].
-nombre(n(n_11), f, sn) --> [universidad].
-nombre(n(n_12), m, sn) --> [perro].
-nombre(n(n_13), m, sn) --> [jardin].
-nombre(n(n_14), m, sn) --> [vecino].
+nombre(n(n_1), m, sn) --> [man].
+nombre(n(n_2), f, sn) --> [woman].
+nombre(n(n_3), m, sn) --> [john].
+nombre(n(n_4), f, sn) --> [mary].
+nombre(n(n_5), f, sn) --> [apple].
+nombre(n(n_6), f, pl) --> [apples].
+nombre(n(n_7), m, sn) --> [cat].
+nombre(n(n_8), m, sn) --> [mouse].
+nombre(n(n_9), m, sn) --> [student].
+nombre(n(n_10), m, pl) --> [mouses].
+nombre(n(n_11), f, sn) --> [university].
+nombre(n(n_12), m, sn) --> [dog].
+nombre(n(n_13), m, sn) --> [garden].
+nombre(n(n_14), m, sn) --> [neightbour].
 nombre(n(n_15), m, sn) --> [canario].
-nombre(n(n_16), m, sn) --> [periodico].
-nombre(n(n_17), m, sn) --> [cafe].
+nombre(n(n_16), m, sn) --> [newspaper].
+nombre(n(n_17), m, sn) --> [coffe].
 nombre(n(n_18), m, sn) --> [oscar, wilde].
-nombre(n(n_19), m, sn) --> [el, fantasma, de, canterville].
+nombre(n(n_19), m, sn) --> [the, canterville, ghost].
 
 verbo(v(v_1), sn) --> [ama].
 verbo(v(v_2), sn) --> [come].
