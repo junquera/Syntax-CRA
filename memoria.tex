@@ -20,6 +20,9 @@
 
     \pagenumbering{arabic}
 
+    \obeyspaces
+
+
     \section*{Introducción}
 
     Se pide realizar un programa que, utilizando \emph{Prolog}, estudie un conjunto de frases a través de su gramática y las traduzca. Hemos dividido la pŕactica en dos partes: \textbf{4. Estructura sintáctica} y \textbf{5. Traductor sencillo}. Para coordinarnos en el trabajo, hemos creado un repositorio público en la plataforma \emph{GitHub}\cite{REPO}.
@@ -28,7 +31,6 @@
 
     Para el estudio de la estructura sintáctica, hemos completado el diccionario del ejemplo y las reglas gramáticas. Para construir la estructura propiamente dicha (los parámetros que recibirá \emph{draw.pl}) hemos parametrizado las reglas gramaticales y hemos ``generalizado" la forma de detectar las palabras del diccionario. Por ejemplo, para la frase \textbf{``El gato cazó un ratón"}, obtenemos un resultado como el siguiente:\\
 
-    \obeyspaces{
         \texttt{oracion(X, [el, gato, cazo, un, raton],[]), draw(X).}\\
 
         \texttt{                   o}
@@ -58,26 +60,159 @@
         \texttt{ el    gato    cazo    un    raton}\\
 
         \texttt{X = o(gn(det(el), n(gato)), gv(v(cazo), gn(det(un), n(raton))))}
-    }
+
 
     \section*{Traductor sencillo}
-    \subsection*{Subsection}
 
-    Subsection P1.\\
+    Para la realización del ejercicio se han encontrado varios obstáculos, todos resueltos con éxito. A continuación se desarrollarán todos los problemas y soluciones tomadas.
 
-    Subsection P2.
+    \subsection*{Reglas gramaticales aplicadas en español}
 
-    \subsubsection*{Sub Subsection}
+    \begin{enumerate}
 
-    \begin{itemize}
-        \item \textbf{Section}
-        \begin{enumerate}
-            \item \emph{``Subsection"}
-            \begin{enumerate}
-                \item ``Sub Subsection"
-            \end{enumerate}
-        \end{enumerate}
-    \end{itemize}
+        \item Se ha propuesto añadir la regla  \texttt{oracion(o(GV)) --> g\_verbal(GV, \_)} que trata a las oraciones con conjunciones, de tal manera, que permite empezar una oración con un verbo.
+
+        \item Se ha comprobado a partir de las oraciones a analizar, que una oración puede empezar con un determinante, seguido de un nombre y un adjetivo, para ello se ha construido la siguiente regla \texttt{ g\_nominal(gn(D, N, A), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), adjetivo (A, G, NUM)}.
+
+        \item En el grupo nominal, también es posible encontrar que está formada por una proposición, en este caso, puede ir acompañado de un determinante, nombre, o ambas, para ello se han construido las siguientes reglas gramaticales:
+
+            \begin{itemize}
+
+                \item \texttt{g\_nominal(gn(D, GP), G, NUM) --> determinante(D, G, NUM), g\_proposicional (GP)}.
+
+                \item \texttt{g\_nominal(gn(N, GP), G, NUM) --> nombre(N, G, NUM), g\_proposicional(GP)}.
+
+                \item \texttt{g\_nominal(gn(D, N, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), g\_proposicional(GP)}.
+
+            \end{itemize}
+
+        \item Del mismo modo que se pueden encontrar proposiciones acompañadas de determinantes, o nombres, con las preposiciones ocurre lo mismo, y adicionalmente, es posible  que se encuentre seguido de un adjetivo como se ve a continuación:
+
+            \begin{itemize}
+
+                \item \texttt{g\_nominal(gn(D, N, A, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM),adjetivo(A, G, NUM), g\_preposicional(GP)}.
+
+                \item \texttt{g\_nominal(gn(D, N, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), g\_preposicional(GP)}.
+
+            \end{itemize}
+
+        \item La preposición puede encontrarse también en el grupo verbal acompañado con un verbo, siendo en este caso: \texttt{g\_verbal(gv(V, GP), NUM) --> verbo(V,NUM), g\_preposicional(GP)}.
+
+        \item En el grupo verbal, se ha tenido en cuenta en varios casos que una oración sea compuesta, es decir, posea una conjunción que una dos oraciones, dicha conjunción puede ir seguida por un verbo, un grupo nominal y verbo, o un adjetivo y un verbo como se puede ver:
+
+            \begin{itemize}
+
+                \item \texttt{g\_verbal(gv(V, GN, CMP), NUM) --> verbo(V,NUM), g\_nominal(GN, \_, \_), compuesta(CMP)}.
+
+                \item \texttt{g\_verbal(gv(V, A, CMP), NUM) --> verbo(V,NUM), adjetivo(A, \_, NUM), compuesta(CMP)}.
+
+                \item \texttt{g\_verbal(gv(V, CMP), NUM) --> verbo(V,NUM), compuesta(CMP)}.
+
+            \end{itemize}
+
+        \item Como caso adicional en el grupo verbal, es posible que un verbo o un adjetivo se encuentre seguido de un adverbio dadas las frases a analizar pedidas usando las siguientes reglas gramaticales:
+
+            \begin{itemize}
+
+                \item \texttt{g\_verbal(gv(V, A, GA), NUM) --> verbo(V,NUM), adjetivo(A, \_, NUM), g\_adverbial(GA)}.
+
+                \item \texttt{g\_verbal(gv(V, GA), NUM) --> verbo(V,NUM), g\_adverbial(GA)}.
+
+            \end{itemize}
+
+        \item En el caso de las proposiciones, solo es necesario emplear la regla gramatical \texttt{g\_proposicional(gp(PN, GV)) --> pronombre(PN), g\_verbal(GV, \_)}, ya que en las oraciones pedidas sólo se encuentra dicha regla.
+
+        \item Para las preposiciones se ha tenido en cuenta que pueden ir seguidos de un determinante, verbo, o nombre, para ello, se ha llamado a los grupos nominales y verbales con las siguientes reglas:
+
+            \begin{itemize}
+
+                \item \texttt{g\_preposicional(gp(P, GN)) --> preposicion(P), g\_nominal(GN, \_, \_)}.
+
+                \item \texttt{g\_preposicional(gp(P, GV)) --> preposicion(P), g\_verbal(GV, \_)}.
+
+            \end{itemize}
+
+        \item Con los adverbios se ha planteado varios casos, en el primero de ellos, la oración termina con el adverbio; en el segundo, termina con un adverbio seguido de un adjetivo; en el tercero, prosigue con un determinante o nombre llamando al grupo nominal; y en el cuerto, llama al grupo verbal:
+
+            \begin{itemize}
+
+                \item \texttt{g\_adverbial(ga(ADV)) --> adverbio(ADV)}.
+
+                \item \texttt{g\_adverbial(ga(ADV, A)) --> adverbio(ADV), adjetivo(A, \_, \_)}.
+
+                \item \texttt{g\_adverbial(ga(ADV, A, GN)) --> adverbio(ADV), adjetivo(A, G, NUM), g\_nominal (GN, G,NUM)}.
+
+                \item \texttt{g\_adverbial(gp(ADV, GN)) --> adverbio(ADV), g\_nominal(GN, \_, \_)}.
+
+                \item \texttt{g\_adverbial(gp(ADV, GV)) --> adverbio(ADV), g\_verbal(GV, \_)}.
+
+            \end{itemize}
+
+        \item Para finalizar con las reglas empleadas, se ha tratado la divisón de dos oraciones como una oración compuesta en la que se ha empleado la regla \texttt{compuesta(cnj(CNJ, O)) --> conjuncion(CNJ), oracion(O)}, donde la conjunción se encuentra seguida de una llamada a la oración, pudiendo comenzar con un verbo o no.
+
+    \end{enumerate}
+
+    \subsection*{Reglas gramaticales aplicadas en ingles}
+
+        Con respecto a las reglas gramaticales en ingles, se ha empleado las mismas reglas gramaticales    que en el de español, con una diferencia en el grupo nominal. Al tratarse de lengua inglesa, los    adjetivos se encuentran siempre por delante de los nombres, es por ello, que todas las reglas    gramaticales nominales que posean un nombre y un adjetivo, deberán cambiarse de orden como se muestran a continuación:
+
+        \begin{itemize}
+
+            \item \texttt{nominal\_g(gn(N, A), G, NUM) --> adjetive(A, G, NUM, \_), noun(N, G, NUM, \_)}.
+
+            \item \texttt{nominal\_g(gn(D, N, A), G, NUM) --> determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G, NUM,\_)}.
+
+            \item \texttt{nominal\_g(gn(D, N, A, GP), G, NUM) --> determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G,NUM, \_), prepositional\_g(GP)}.
+
+        \end{itemize}
+
+    \subsection*{Grupos gramaticales implementados tanto en ingles como en español}
+
+        Tanto en inglés como en español se han creado los mismos grupos gramaticales, los cuales, se explicarán a continuación:
+
+        \begin{itemize}
+
+            \item En primer caso, se ha creado el grupo preposicional g\_preposicional, o , prepositional\_g dado que en las frases dadas, aparecen preposiciones, como es el caso de la frase ``Juan estudia en la Universidad" con la preposición 'en'.
+
+            \item En segund caso, se ha procedido a la creación del grupo gramatical g\_adverbial, o adverbial\_g,      ya que, se encuentran adverbios tanto de tiempo, como de cantidad, como es el caso de la frase ``El hombre que vimos ayer es mi vecino" con el adverbio de tiempo 'ayer', o 'yesterday'.
+
+            \item En último caso, se encuentran las oraciones compuestas, para ello, se ha decidido crear el      grupo gramatical compuesta, o complex, el cual comprobará si existe la conjunción 'y', o 'and' para proceder a clasificarla como una oración compuesta, un claro ejemplo es ``Juan es delgado y María es alta".
+
+        \end{itemize}
+
+    \subsection*{Frases traducidas correctamente}
+
+        Actualmente, traducimos todas las frases correctamente. Sin embargo, como no podemos analizar el contexto, hay dos elementos que (aún estando bien traducidos), no conseguimos hacer la mejor traducción posible. Es el caso de:
+
+        \begin{itemize}
+
+            \item ``La universidad es grande > The university is \textbf{big}". Como hemos podido ver en el hilo \emph{large vs.big}\cite{LVB}, lo ideal sería traducir este 'big' como 'large', pero aún así es correcto.
+
+            \item ``Juan estudia en la universidad > John studies \textbf{in} the university". El 'in' debería traducirse como 'at', ya que no se refiere al interior de ningún sitio, sino al sitio en sí. Al estar la frase descontextualizada, no conseguimos dicha correctitud (aunque la traducción pueda considerarse válida).
+
+        \end{itemize}
+
+        Si hubiese que implementar el traductor en un entorno de producción, habría que contar con contexto y, a lo sumo, ``memorizar" frases completas y ver cómo se traducen estas excepciones (lo que ocurre es algo parecido a traducir literalmente una frase hecha).
+
+    \subsection*{Limitaciones de traducción}
+
+        A la hora de realizar la traducción, se han encontrador varios problemas que se han intentado resolver. A continuación se detallarán cada uno de los problemas, y las soluciones tomadas:
+
+        \begin{itemize}
+
+            \item Para traducir nombres propios, se ha planteado que la traducción sea como una lista de nombres, de tal manera que la oración ``oscar wilde escribio el fantasma de canterville", en el español se ha tratado en el diccionario como \texttt{nombre(n(n\_18), m, sn) --> [oscar, wilde]} y en el diccionario en inglés como \texttt{noun(n(n\_18), m, sn, v) --> [oscar, wilde]}.
+
+            \item Cuando un nombre en inglés empieza por vocal y se encuentra precedido por un determinante, tenemos que decidir que tipo de determinante añadir, pues tendría que llevar una 'n' al final. Por ejemplo, la palabra 'apple' no va precedida por 'a', sino 'an'. Para ello, se ha decidido emplear una nueva comprobación tanto en los grupos gramaticales de nombre, adjetivo y determinante en inglés, como en español.
+
+            \item Como ya hemos dicho, la diferenciación entre 'big' y 'large' en las oraciones dadas no es    muy clara, debido al poco contexto que se muestra. Por ello hemos comprobado en páginas de referencia que en casos como estos, no hay ningún problema en utilizar 'big' o 'large'.
+
+            \item El mismo caso se ha manifestado con las palabras 'in' y 'at', ya que para su correcta utilización, es necesario conocer el contexto debido a que 'in' se aplica en unas circunstancias, y 'at' en otras. Como para las frases que hay que utilizar 'at', sigue siendo correcto utilizar 'in', pero es inconrrecto hacerlo al contrario, hemos decidido emplear únicamente 'in'.
+
+            \item Debido a que hay ciertas traducciones que era imposible encajar literalmente tal y como aparecían en el enunciado, hemos hecho nuestra propia implementación en el diccionario para cuadrarlas. Es el caso de la frase ``Ellos comen manzanas'', que según el enunciado debería traducirse como ``They eat \textbf{some} apples", pero literlamente se traduce como ``They eat apples". Hemos optado por traducir 'manzanas' por 'some apples' en el diccionario inglés, ya que la palabra no se utiliza en ningún otro caso de la práctica.
+
+            \item Por último, en castellano, el sujeto no siempre tiene que estar presente en la frase para que sea comprensible. Sin embargo, en inglés, si que tiene que añadirse. Es el caso de la frase ``El hombre que vimos ayer es mi vecino": En inglés corresponde con ``The man that \textbf{we} saw yesterday is my neighbour".  El verbo 'vimos' se traduciría como 'saw', pero sabiendo el número de la conjugación, podemos definirlo en el diccionario inglés como 'we saw'.
+
+        \end{itemize}
 
     \bibliographystyle{plain}
     \bibliography{bibliografia}
