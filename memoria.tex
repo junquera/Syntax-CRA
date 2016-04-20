@@ -1,0 +1,84 @@
+\documentclass[a4paper]{memoir}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{hyperref}
+\usepackage{url}
+
+\title{\TeX{} Article Template}
+\author{Gorgues Valenciano, Alejandro\\
+        \texttt{alegorval@gmail.com}
+        \and
+        Junquera Sánchez, Javier\\
+        \texttt{javier.junquera.sanchez@gmail.com}}
+}
+
+\date{\today}
+
+\begin{document}
+    \maketitle
+
+    \pagenumbering{arabic}
+
+    \section*{Introducción}
+
+    Se pide realizar un programa que, utilizando \emph{Prolog}, estudie un conjunto de frases a través de su gramática y las traduzca. Hemos dividido la pŕactica en dos partes: \textbf{4. Estructura sintáctica} y \textbf{5. Traductor sencillo}. Para coordinarnos en el trabajo, hemos creado un repositorio público en la plataforma \emph{GitHub}\cite{REPO}.
+
+    \section*{Estructura sintáctica}
+
+    Para el estudio de la estructura sintáctica, hemos completado el diccionario del ejemplo y las reglas gramáticas. Para construir la estructura propiamente dicha (los parámetros que recibirá \emph{draw.pl}) hemos parametrizado las reglas gramaticales y hemos ``generalizado" la forma de detectar las palabras del diccionario. Por ejemplo, para la frase \textbf{``El gato cazó un ratón"}, obtenemos un resultado como el siguiente:\\
+
+    \obeyspaces{
+        \texttt{oracion(X, [el, gato, cazo, un, raton],[]), draw(X).}\\
+
+        \texttt{                   o}
+
+        \texttt{                   |}
+
+        \texttt{     +------------------+}
+
+        \texttt{     gn                 gv}
+
+        \texttt{     |                  |}
+
+        \texttt{ +------+       +----------+}
+
+        \texttt{det     n       v          gn}
+
+        \texttt{ |      |       |          |}
+
+        \texttt{ |      |       |      +-------+}
+
+        \texttt{ |      |       |     det      n}
+
+        \texttt{ |      |       |      |       |}
+
+        \texttt{ |      |       |      |       |}
+
+        \texttt{ el    gato    cazo    un    raton}\\
+
+        \texttt{X = o(gn(det(el), n(gato)), gv(v(cazo), gn(det(un), n(raton))))}
+    }
+
+    \section*{Traductor sencillo}
+    \subsection*{Subsection}
+
+    Subsection P1.\\
+
+    Subsection P2.
+
+    \subsubsection*{Sub Subsection}
+
+    \begin{itemize}
+        \item \textbf{Section}
+        \begin{enumerate}
+            \item \emph{``Subsection"}
+            \begin{enumerate}
+                \item ``Sub Subsection"
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+
+    \bibliographystyle{plain}
+    \bibliography{bibliografia}
+\end{document}

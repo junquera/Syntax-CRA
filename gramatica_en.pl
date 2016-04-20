@@ -2,13 +2,13 @@
 sentence(o(GN, GV)) --> nominal_g(GN, _, NUM), verbal_g(GV, NUM).
 sentence(o(GV)) --> verbal_g(GV, _).
 
-nominal_g(gn(N), G, NUM) --> noun(N, G, NUM, CV).
-nominal_g(gn(N), G, NUM) --> determ(N, _, NUM).
+nominal_g(gn(N), G, NUM) --> noun(N, G, NUM, _).
+nominal_g(gn(N), G, NUM) --> determ(N, G, NUM).
 nominal_g(gn(D, N), G, NUM) --> determ(D, CV, NUM), noun(N, G, NUM, CV).
 nominal_g(gn(N, A), G, NUM) --> adjetive(A, G, NUM, _), noun(N, G, NUM, _).
 nominal_g(gn(D, N, A), G, NUM) --> determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G, NUM, _).
-nominal_g(gn(D, GP), G, NUM) --> determ(D, _, NUM), propositional_g(GP).
-nominal_g(gn(N, GP), G, NUM) --> noun(N, G, NUM, CV), propositional_g(GP).
+nominal_g(gn(D, GP), _, NUM) --> determ(D, _, NUM), propositional_g(GP).
+nominal_g(gn(N, GP), G, NUM) --> noun(N, G, NUM, _), propositional_g(GP).
 nominal_g(gn(D, N, A, GP), G, NUM) --> determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G, NUM, _), prepositional_g(GP).
 nominal_g(gn(D, N, GP), G, NUM) --> determ(D, CV, NUM), noun(N, G, NUM, CV), prepositional_g(GP).
 nominal_g(gn(D, N, GP), G, NUM) --> determ(D, CV, NUM), noun(N, G, NUM, CV), propositional_g(GP).
