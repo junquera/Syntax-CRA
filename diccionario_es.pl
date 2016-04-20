@@ -35,13 +35,13 @@ nombre(n(n_19), m, sn) --> [el, fantasma, de, canterville].
 
 verbo(v(v_1), sn) --> [ama].
 verbo(v(v_2), sn) --> [come].
-verbo(v(v_2), sn) --> [comes].
+verbo(v(v_13), sn) --> [comes].
 verbo(v(v_3), sn) --> [estudia].
 verbo(v(v_4), sn) --> [era].
 verbo(v(v_6), sn) --> [es].
 verbo(v(v_7), pl) --> [comen].
 verbo(v(v_8), sn) --> [persiguio].
-verbo(v(v_8), pl) --> [vimos].
+verbo(v(v_14), pl) --> [vimos].
 verbo(v(v_9), sn) --> [canta].
 verbo(v(v_10), sn) --> [toma].
 verbo(v(v_11), sn) --> [lee].
