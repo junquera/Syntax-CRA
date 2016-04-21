@@ -10,8 +10,9 @@
         \texttt{alegorval@gmail.com}
         \and
         Junquera Sánchez, Javier\\
-        \texttt{javier.junquera.sanchez@gmail.com}}
+        \texttt{javier.junquera.sanchez@gmail.com}
 }
+
 
 \date{\today}
 
@@ -21,7 +22,6 @@
     \pagenumbering{arabic}
 
     \obeyspaces
-
 
     \section*{Introducción}
 
@@ -78,11 +78,11 @@
 
             \begin{itemize}
 
-                \item \texttt{g\_nominal(gn(D, GP), G, NUM) --> determinante(D, G, NUM), g\_proposicional (GP)}.
+                \item \texttt{g\_nominal(gn(D, GP), G, NUM) -->\\ determinante(D, G, NUM), g\_proposicional (GP)}.
 
-                \item \texttt{g\_nominal(gn(N, GP), G, NUM) --> nombre(N, G, NUM), g\_proposicional(GP)}.
+                \item \texttt{g\_nominal(gn(N, GP), G, NUM) -->\\ nombre(N, G, NUM), g\_proposicional(GP)}.
 
-                \item \texttt{g\_nominal(gn(D, N, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), g\_proposicional(GP)}.
+                \item \texttt{g\_nominal(gn(D, N, GP), G, NUM) -->\\ determinante(D, G, NUM), nombre(N, G, NUM), g\_proposicional(GP)}.
 
             \end{itemize}
 
@@ -90,9 +90,9 @@
 
             \begin{itemize}
 
-                \item \texttt{g\_nominal(gn(D, N, A, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM),adjetivo(A, G, NUM), g\_preposicional(GP)}.
+                \item \texttt{g\_nominal(gn(D, N, A, GP), G, NUM) -->\\ determinante(D, G, NUM), nombre(N, G, NUM),adjetivo(A, G, NUM), g\_preposicional(GP)}.
 
-                \item \texttt{g\_nominal(gn(D, N, GP), G, NUM) --> determinante(D, G, NUM), nombre(N, G, NUM), g\_preposicional(GP)}.
+                \item \texttt{g\_nominal(gn(D, N, GP), G, NUM) -->\\ determinante(D, G, NUM), nombre(N, G, NUM), g\_preposicional(GP)}.
 
             \end{itemize}
 
@@ -102,11 +102,11 @@
 
             \begin{itemize}
 
-                \item \texttt{g\_verbal(gv(V, GN, CMP), NUM) --> verbo(V,NUM), g\_nominal(GN, \_, \_), compuesta(CMP)}.
+                \item \texttt{g\_verbal(gv(V, GN, CMP), NUM) -->\\ verbo(V,NUM), g\_nominal(GN, \_, \_), compuesta(CMP)}.
 
-                \item \texttt{g\_verbal(gv(V, A, CMP), NUM) --> verbo(V,NUM), adjetivo(A, \_, NUM), compuesta(CMP)}.
+                \item \texttt{g\_verbal(gv(V, A, CMP), NUM) -->\\ verbo(V,NUM), adjetivo(A, \_, NUM), compuesta(CMP)}.
 
-                \item \texttt{g\_verbal(gv(V, CMP), NUM) --> verbo(V,NUM), compuesta(CMP)}.
+                \item \texttt{g\_verbal(gv(V, CMP), NUM) -->\\ verbo(V,NUM), compuesta(CMP)}.
 
             \end{itemize}
 
@@ -114,9 +114,9 @@
 
             \begin{itemize}
 
-                \item \texttt{g\_verbal(gv(V, A, GA), NUM) --> verbo(V,NUM), adjetivo(A, \_, NUM), g\_adverbial(GA)}.
+                \item \texttt{g\_verbal(gv(V, A, GA), NUM) -->\\ verbo(V,NUM), adjetivo(A, \_, NUM), g\_adverbial(GA)}.
 
-                \item \texttt{g\_verbal(gv(V, GA), NUM) --> verbo(V,NUM), g\_adverbial(GA)}.
+                \item \texttt{g\_verbal(gv(V, GA), NUM) -->\\ verbo(V,NUM), g\_adverbial(GA)}.
 
             \end{itemize}
 
@@ -126,9 +126,9 @@
 
             \begin{itemize}
 
-                \item \texttt{g\_preposicional(gp(P, GN)) --> preposicion(P), g\_nominal(GN, \_, \_)}.
+                \item \texttt{g\_preposicional(gp(P, GN)) -->\\ preposicion(P), g\_nominal(GN, \_, \_)}.
 
-                \item \texttt{g\_preposicional(gp(P, GV)) --> preposicion(P), g\_verbal(GV, \_)}.
+                \item \texttt{g\_preposicional(gp(P, GV)) -->\\ preposicion(P), g\_verbal(GV, \_)}.
 
             \end{itemize}
 
@@ -136,15 +136,15 @@
 
             \begin{itemize}
 
-                \item \texttt{g\_adverbial(ga(ADV)) --> adverbio(ADV)}.
+                \item \texttt{g\_adverbial(ga(ADV)) -->\\ adverbio(ADV)}.
 
-                \item \texttt{g\_adverbial(ga(ADV, A)) --> adverbio(ADV), adjetivo(A, \_, \_)}.
+                \item \texttt{g\_adverbial(ga(ADV, A)) -->\\ adverbio(ADV), adjetivo(A, \_, \_)}.
 
-                \item \texttt{g\_adverbial(ga(ADV, A, GN)) --> adverbio(ADV), adjetivo(A, G, NUM), g\_nominal (GN, G,NUM)}.
+                \item \texttt{g\_adverbial(ga(ADV, A, GN)) -->\\ adverbio(ADV), adjetivo(A, G, NUM), g\_nominal (GN, G,NUM)}.
 
-                \item \texttt{g\_adverbial(gp(ADV, GN)) --> adverbio(ADV), g\_nominal(GN, \_, \_)}.
+                \item \texttt{g\_adverbial(gp(ADV, GN)) -->\\ adverbio(ADV), g\_nominal(GN, \_, \_)}.
 
-                \item \texttt{g\_adverbial(gp(ADV, GV)) --> adverbio(ADV), g\_verbal(GV, \_)}.
+                \item \texttt{g\_adverbial(gp(ADV, GV)) -->\\ adverbio(ADV), g\_verbal(GV, \_)}.
 
             \end{itemize}
 
@@ -154,15 +154,15 @@
 
     \subsection*{Reglas gramaticales aplicadas en ingles}
 
-        Con respecto a las reglas gramaticales en ingles, se ha empleado las mismas reglas gramaticales    que en el de español, con una diferencia en el grupo nominal. Al tratarse de lengua inglesa, los    adjetivos se encuentran siempre por delante de los nombres, es por ello, que todas las reglas    gramaticales nominales que posean un nombre y un adjetivo, deberán cambiarse de orden como se muestran a continuación:
+        Con respecto a las reglas gramaticales en ingles, se ha empleado las mismas reglas gramaticales que en el de español, con una diferencia en el grupo nominal. Al tratarse de lengua inglesa, los adjetivos se encuentran siempre por delante de los nombres, es por ello, que todas las reglas gramaticales nominales que posean un nombre y un adjetivo, deberán cambiarse de orden como se muestran a continuación:
 
         \begin{itemize}
 
-            \item \texttt{nominal\_g(gn(N, A), G, NUM) --> adjetive(A, G, NUM, \_), noun(N, G, NUM, \_)}.
+            \item \texttt{nominal\_g(gn(N, A), G, NUM) -->\\ adjetive(A, G, NUM, \_), noun(N, G, NUM, \_)}.
 
-            \item \texttt{nominal\_g(gn(D, N, A), G, NUM) --> determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G, NUM,\_)}.
+            \item \texttt{nominal\_g(gn(D, N, A), G, NUM) -->\\ determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G, NUM,\_)}.
 
-            \item \texttt{nominal\_g(gn(D, N, A, GP), G, NUM) --> determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G,NUM, \_), prepositional\_g(GP)}.
+            \item \texttt{nominal\_g(gn(D, N, A, GP), G, NUM) -->\\ determ(D, CV, NUM), adjetive(A, G, NUM, CV), noun(N, G,NUM, \_), prepositional\_g(GP)}.
 
         \end{itemize}
 
@@ -174,9 +174,9 @@
 
             \item En primer caso, se ha creado el grupo preposicional g\_preposicional, o , prepositional\_g dado que en las frases dadas, aparecen preposiciones, como es el caso de la frase ``Juan estudia en la Universidad" con la preposición 'en'.
 
-            \item En segund caso, se ha procedido a la creación del grupo gramatical g\_adverbial, o adverbial\_g,      ya que, se encuentran adverbios tanto de tiempo, como de cantidad, como es el caso de la frase ``El hombre que vimos ayer es mi vecino" con el adverbio de tiempo 'ayer', o 'yesterday'.
+            \item En segund caso, se ha procedido a la creación del grupo gramatical g\_adverbial, o adverbial\_g, ya que, se encuentran adverbios tanto de tiempo, como de cantidad, como es el caso de la frase ``El hombre que vimos ayer es mi vecino" con el adverbio de tiempo 'ayer', o 'yesterday'.
 
-            \item En último caso, se encuentran las oraciones compuestas, para ello, se ha decidido crear el      grupo gramatical compuesta, o complex, el cual comprobará si existe la conjunción 'y', o 'and' para proceder a clasificarla como una oración compuesta, un claro ejemplo es ``Juan es delgado y María es alta".
+            \item En último caso, se encuentran las oraciones compuestas, para ello, se ha decidido crear el grupo gramatical compuesta, o complex, el cual comprobará si existe la conjunción 'y', o 'and' para proceder a clasificarla como una oración compuesta, un claro ejemplo es ``Juan es delgado y María es alta".
 
         \end{itemize}
 
@@ -186,9 +186,9 @@
 
         \begin{itemize}
 
-            \item ``La universidad es grande > The university is \textbf{big}". Como hemos podido ver en el hilo \emph{large vs.big}\cite{LVB}, lo ideal sería traducir este 'big' como 'large', pero aún así es correcto.
+            \item ``La universidad es grande" \textgreater ``The university is \textbf{big}". Como hemos podido ver en el hilo \emph{large vs.big}\cite{LVB}, lo ideal sería traducir este 'big' como 'large', pero aún así es correcto.
 
-            \item ``Juan estudia en la universidad > John studies \textbf{in} the university". El 'in' debería traducirse como 'at', ya que no se refiere al interior de ningún sitio, sino al sitio en sí. Al estar la frase descontextualizada, no conseguimos dicha correctitud (aunque la traducción pueda considerarse válida).
+            \item ``Juan estudia en la universidad" \textgreater ``John studies \textbf{in} the university". El 'in' debería traducirse como 'at', ya que no se refiere al interior de ningún sitio, sino al sitio en sí. Al estar la frase descontextualizada, no conseguimos dicha correctitud (aunque la traducción pueda considerarse válida).
 
         \end{itemize}
 
@@ -200,17 +200,17 @@
 
         \begin{itemize}
 
-            \item Para traducir nombres propios, se ha planteado que la traducción sea como una lista de nombres, de tal manera que la oración ``oscar wilde escribio el fantasma de canterville", en el español se ha tratado en el diccionario como \texttt{nombre(n(n\_18), m, sn) --> [oscar, wilde]} y en el diccionario en inglés como \texttt{noun(n(n\_18), m, sn, v) --> [oscar, wilde]}.
+            \item Para traducir nombres propios, se ha planteado que la traducción sea como una lista de nombres, de tal manera que la oración ``Oscar Wilde escribio El Fantasma de Canterville", en el español se ha tratado en el diccionario como \texttt{nombre(n(n\_18), m, sn) --> [oscar, wilde]} y en el diccionario en inglés como \texttt{noun(n(n\_18), m, sn, v) --> [oscar, wilde]}.
 
             \item Cuando un nombre en inglés empieza por vocal y se encuentra precedido por un determinante, tenemos que decidir que tipo de determinante añadir, pues tendría que llevar una 'n' al final. Por ejemplo, la palabra 'apple' no va precedida por 'a', sino 'an'. Para ello, se ha decidido emplear una nueva comprobación tanto en los grupos gramaticales de nombre, adjetivo y determinante en inglés, como en español.
 
-            \item Como ya hemos dicho, la diferenciación entre 'big' y 'large' en las oraciones dadas no es    muy clara, debido al poco contexto que se muestra. Por ello hemos comprobado en páginas de referencia que en casos como estos, no hay ningún problema en utilizar 'big' o 'large'.
+            \item Como ya hemos dicho, la diferenciación entre 'big' y 'large' en las oraciones dadas no es muy clara, debido al poco contexto que se muestra. Por ello hemos comprobado en páginas de referencia que en casos como estos, no hay ningún problema en utilizar 'big' o 'large'.
 
             \item El mismo caso se ha manifestado con las palabras 'in' y 'at', ya que para su correcta utilización, es necesario conocer el contexto debido a que 'in' se aplica en unas circunstancias, y 'at' en otras. Como para las frases que hay que utilizar 'at', sigue siendo correcto utilizar 'in', pero es inconrrecto hacerlo al contrario, hemos decidido emplear únicamente 'in'.
 
             \item Debido a que hay ciertas traducciones que era imposible encajar literalmente tal y como aparecían en el enunciado, hemos hecho nuestra propia implementación en el diccionario para cuadrarlas. Es el caso de la frase ``Ellos comen manzanas'', que según el enunciado debería traducirse como ``They eat \textbf{some} apples", pero literlamente se traduce como ``They eat apples". Hemos optado por traducir 'manzanas' por 'some apples' en el diccionario inglés, ya que la palabra no se utiliza en ningún otro caso de la práctica.
 
-            \item Por último, en castellano, el sujeto no siempre tiene que estar presente en la frase para que sea comprensible. Sin embargo, en inglés, si que tiene que añadirse. Es el caso de la frase ``El hombre que vimos ayer es mi vecino": En inglés corresponde con ``The man that \textbf{we} saw yesterday is my neighbour".  El verbo 'vimos' se traduciría como 'saw', pero sabiendo el número de la conjugación, podemos definirlo en el diccionario inglés como 'we saw'.
+            \item Por último, en castellano, el sujeto no siempre tiene que estar presente en la frase para que sea comprensible. Sin embargo, en inglés, si que tiene que añadirse. Es el caso de la frase ``El hombre que vimos ayer es mi vecino": En inglés corresponde con ``The man that \textbf{we} saw yesterday is my neighbour". El verbo 'vimos' se traduciría como 'saw', pero sabiendo el número de la conjugación, podemos definirlo en el diccionario inglés como 'we saw'.
 
         \end{itemize}
 
